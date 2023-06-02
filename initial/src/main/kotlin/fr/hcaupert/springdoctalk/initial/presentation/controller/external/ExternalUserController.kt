@@ -5,6 +5,7 @@ import fr.hcaupert.springdoctalk.initial.presentation.common.PageRequestDto
 import fr.hcaupert.springdoctalk.initial.presentation.common.PageResponseDto
 import fr.hcaupert.springdoctalk.initial.presentation.controller.external.dto.UserCreateExternalRequestDto
 import fr.hcaupert.springdoctalk.initial.presentation.controller.external.dto.UserResponseDto
+import fr.hcaupert.springdoctalk.initial.presentation.controller.external.dto.UserSortAttribute
 import fr.hcaupert.springdoctalk.initial.service.UserService
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
@@ -29,7 +30,7 @@ class ExternalUserController(
     }
 
     @GetMapping
-    fun all(pageRequestDto: PageRequestDto<*>): PageResponseDto<UserResponseDto> {
+    fun all(pageRequestDto: PageRequestDto<UserSortAttribute>): PageResponseDto<UserResponseDto> {
         return userService.all()
     }
 }
