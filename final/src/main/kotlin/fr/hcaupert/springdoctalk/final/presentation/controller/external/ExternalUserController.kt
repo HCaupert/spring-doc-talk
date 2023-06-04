@@ -4,6 +4,7 @@ import fr.hcaupert.springdoctalk.final.presentation.common.IdResponseDto
 import fr.hcaupert.springdoctalk.final.presentation.common.PageRequestDto
 import fr.hcaupert.springdoctalk.final.presentation.common.PageResponseDto
 import fr.hcaupert.springdoctalk.final.presentation.controller.external.dto.UserCreateExternalRequestDto
+import fr.hcaupert.springdoctalk.final.presentation.controller.external.dto.UserPageExternalRequestDto
 import fr.hcaupert.springdoctalk.final.presentation.controller.external.dto.UserResponseDto
 import fr.hcaupert.springdoctalk.final.presentation.controller.external.dto.UserSortAttribute
 import fr.hcaupert.springdoctalk.final.presentation.documentation.ErrorApiResponse
@@ -44,5 +45,5 @@ class ExternalUserController(
 
     @Operation(summary = "Search users", description = "List all users")
     @GetMapping
-    fun all(@ParameterObject pageRequestDto: PageRequestDto<UserSortAttribute>): PageResponseDto<UserResponseDto> = userService.all()
+    fun all(@ParameterObject pageRequestDto: UserPageExternalRequestDto): PageResponseDto<UserResponseDto> = userService.all()
 }

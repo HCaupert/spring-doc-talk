@@ -1,9 +1,8 @@
 package fr.hcaupert.springdoctalk.initial.presentation.common
 
-data class PageRequestDto<T : Enum<T>>(
-    val page: Int,
-    val size: Int,
-    val sortDirection: SortDirection,
-    val sortAttribute: T
-)
-
+abstract class PageRequestDto<T : Enum<T>> {
+    abstract val page: Int
+    abstract val size: Int
+    abstract val sortDirection: SortDirection
+    abstract val sortAttribute: T
+}
