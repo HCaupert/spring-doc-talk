@@ -70,21 +70,13 @@ Séparons-nous de tout ce qui est "_dto_"
   - Un not found sur un create
   - Les error code etc..
 - Cacher les réponse 400 en rajouter @Hidden sur le Controller advice
+
+##### WARNING : Tout ce qu'on fait => Uniquement de la documentation. Ça ne change rien au code
+
+
 - Rajouter une réponse sur le endpoint de create :
-```kotlin
-@ApiResponse(
-  responseCode = "400",
-  description = "Bad Request",
-  content = [Content(
-    schema = Schema(implementation = BadRequestErrorDto::class),
-    examples = [
-      ExampleObject(name = "user not found", value = """{errorCode: USER_MUST_BE16, message: "User must be 16 years old"}"""),
-      ExampleObject(name = "bar", value = """{errorCode: FO, message: "User must be 16 years old"}"""),
-    ]
-  )],
-)
-fun foo()
-  ```
+- **> apir**
+
 - Puis y'a plus qu'à faire pareil pour conflict et not found est on est bien ! Ou pas...
 - L'idéal serait une annotation (la live coder) à utiliser : 
 ```kotlin
@@ -104,30 +96,25 @@ annotation class ErrorApiResponse(
 - path `presentation/documentation/ErrorResponseCustomizer`
 - Implémenter `GlobalOperationCustomizer`
 - Parler des arguments de l'interface
-- sous méthode > **cust**
+- Recup l'annot ou return
+- sous méthode **> cust** + bad request usage
+- Expliquer la méthode
+- Faire pareil pour les deux autres types d'erreurs **> cusi**
+- RUN
 
-WARNING : Tout ce qu'on fait => Uniquement de la documentation. Ça ne change rien au code
 
+- Si par exemple, on veut se rajouter les exemples
+```kotlin
+mediaType.examples = errorCodes.associate { it.toPrettyString() to Example().apply { value = bodyBuilder(it) } }
+```
+- Rajouter la lambda dans les arguments
+- Implémenter les mappers : **> ebb**
+- RUN
 
 ### SIDE QUESTS 
 
 #### Auth 
-```kotlin
-@OpenAPIDefinition(
-    //info is required
-    info = Info(title = "SpringDoc Talk", version = "1.0"),
-    security = [SecurityRequirement(name = SECURITY_SCHEME)],
-)
-@SecurityScheme(
-    name = SECURITY_SCHEME,
-    type = SecuritySchemeType.OAUTH2,
-    flows = OAuthFlows(
-        implicit = OAuthFlow(
-            authorizationUrl = "https://dev-qbztblpx2ly1bvr8.eu.auth0.com/oauth/authorize",
-            tokenUrl = "https://dev-qbztblpx2ly1bvr8.eu.auth0.com/oauth/token",
-            scopes = [OAuthScope(name = "openid", description = "OpenID")]
-        ),
-    ),
-)
-class OpenApiConfig
-```
+- Dans la group config
+- **> oad**
+- **> ssc**
+- Montrer que les annots c'est pas forcément pertinent -> openApiCustomizer
