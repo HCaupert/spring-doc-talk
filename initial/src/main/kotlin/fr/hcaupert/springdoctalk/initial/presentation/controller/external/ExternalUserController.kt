@@ -5,7 +5,12 @@ import fr.hcaupert.springdoctalk.initial.presentation.common.PageResponseDto
 import fr.hcaupert.springdoctalk.initial.presentation.controller.external.dto.UserCreateExternalRequestDto
 import fr.hcaupert.springdoctalk.initial.presentation.controller.external.dto.UserPageExternalRequestDto
 import fr.hcaupert.springdoctalk.initial.presentation.controller.external.dto.UserResponseDto
+import fr.hcaupert.springdoctalk.initial.presentation.error.BadRequestErrorDto
 import fr.hcaupert.springdoctalk.initial.service.UserService
+import io.swagger.v3.oas.annotations.media.Content
+import io.swagger.v3.oas.annotations.media.ExampleObject
+import io.swagger.v3.oas.annotations.media.Schema
+import io.swagger.v3.oas.annotations.responses.ApiResponse
 import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.*
 import java.util.*

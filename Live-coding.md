@@ -1,3 +1,13 @@
+### Before Starting : 
+- Fermer tous les conteneurs docker
+- Désactiver github copilot
+- Lancer le cli redoc
+- Ouvrir les onglets : 
+  - `:8080/v3/api-docs` et collapse les trucs
+  - `:8080/swagger-ui/index.html` swagger
+  - `:8081` Redoc
+
+
 
 ### LVL 1 -> 2
 

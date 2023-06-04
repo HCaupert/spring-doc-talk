@@ -16,6 +16,7 @@ spring:
             issuer-uri: ${OAUTH_ISSUER_URL}
 springdoc:
   default-produces-media-type: application/json
+
   swagger-ui:
     oauth:
       client-id: ${OAUTH_CLIENT_ID}

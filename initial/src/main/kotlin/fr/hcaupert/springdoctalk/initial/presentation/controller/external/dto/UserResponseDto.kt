@@ -30,9 +30,3 @@ data class CompanyResponseDto(
     override val updateDate: LocalDateTime,
 ) : UserResponseDto
 
-enum class UserSortAttribute {
-    EMAIL,
-    CREATION_DATE,
-    UPDATE_DATE,
-    ;
-}
