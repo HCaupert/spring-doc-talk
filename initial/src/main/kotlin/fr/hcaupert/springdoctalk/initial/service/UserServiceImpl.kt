@@ -36,9 +36,12 @@ class UserServiceImpl : UserService {
     @EventListener
     fun cheatApiDoc(event: ContextRefreshedEvent) {
         val file = File("doc.json")
-        URL("http://localhost:8080/v3/api-docs")
-            .readBytes()
-            .also(file::writeBytes)
-        logger.info("Downloaded open-api specification at ${file.absolutePath}")
+        runCatching {
+            URL("http://localhost:8080/v3/api-docs/external")
+                .readBytes()
+                .also(file::writeBytes)
+            logger.info("Downloaded open-api specification at ${file.absolutePath}")
+        }
+            .onFailure { logger.info("Unable to download open-api specification") }
     }
 }
