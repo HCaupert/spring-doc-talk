@@ -6,7 +6,7 @@
   - `:8080/v3/api-docs` et collapse les trucs
   - `:8080/swagger-ui/index.html` swagger
   - `:8081` Redoc
-
+- Préparer la commande openApiDiff
 
 
 ### LVL 1 -> 2
@@ -69,7 +69,7 @@ Séparons-nous de tout ce qui est "_dto_"
   - C'est bizarre d'avoir des 400 sur un list
   - Un not found sur un create
   - Les error code etc..
-- Cacher les réponse 400 en rajouter @Hidden sur le Controller advice
+- Cacher les réponse 40X en rajouter @Hidden sur le Controller advice
 
 ##### WARNING : Tout ce qu'on fait => Uniquement de la documentation. Ça ne change rien au code
 
@@ -77,13 +77,7 @@ Séparons-nous de tout ce qui est "_dto_"
 - Rajouter une réponse sur le endpoint de create :
 - **> apir**
 
-- Puis y'a plus qu'à faire pareil pour conflict et not found est on est bien ! Ou pas...
-- L'idéal serait une annotation (la live coder) à utiliser : 
-```kotlin
-annotation class ErrorApiResponse(
-  val badRequestErrorCodes: Array<ErrorCode> = [],
-)
-```
+- Puis y'a plus qu'à faire pareil pour conflict et not found et on est bien ! Ou pas...
 - Puis faire pareil avec les autres errorCodes > **nfe**
 - Rajouter sur le controllers 
   - Create
@@ -92,24 +86,8 @@ annotation class ErrorApiResponse(
   - byId
     - _notFound_ : `USER_NOT_FOUND`
 
+
 #### Customizer itself
-- path `presentation/documentation/ErrorResponseCustomizer`
-- Implémenter `GlobalOperationCustomizer`
-- Parler des arguments de l'interface
-- Recup l'annot ou return
-- sous méthode **> cust** + bad request usage
-- Expliquer la méthode
-- Faire pareil pour les deux autres types d'erreurs **> cusi**
-- RUN
-
-
-- Si par exemple, on veut se rajouter les exemples
-```kotlin
-mediaType.examples = errorCodes.associate { it.toPrettyString() to Example().apply { value = bodyBuilder(it) } }
-```
-- Rajouter la lambda dans les arguments
-- Implémenter les mappers : **> ebb**
-- RUN
 
 ### SIDE QUESTS 
 
