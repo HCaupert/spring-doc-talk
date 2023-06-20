@@ -13,8 +13,8 @@ import java.time.LocalDate
     use = JsonTypeInfo.Id.DEDUCTION,
 )
 @JsonSubTypes(
-    JsonSubTypes.Type(PersonCreateExternalRequestDto::class),
     JsonSubTypes.Type(CompanyCreateExternalRequestDto::class),
+    JsonSubTypes.Type(PersonCreateExternalRequestDto::class),
 )
 sealed interface UserCreateExternalRequestDto {
     @get:Email
